@@ -11,10 +11,10 @@ class ProspectController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view prospects')->only(['index', 'show']);
-        $this->middleware('permission:create prospects')->only(['create', 'store']);
-        $this->middleware('permission:edit prospects')->only(['edit', 'update']);
-        $this->middleware('permission:delete prospects')->only(['destroy']);
+        $this->middleware('permission:ver prospectos')->only(['index', 'show']);
+        $this->middleware('permission:crear prospectos')->only(['create', 'store']);
+        $this->middleware('permission:editar prospectos')->only(['edit', 'update']);
+        $this->middleware('permission:eliminar prospectos')->only(['destroy']);
     }
 
     /**

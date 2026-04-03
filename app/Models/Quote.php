@@ -54,4 +54,17 @@ class Quote extends Model
         $this->update(['total' => $total]);
         return $total;
     }
+
+    public function getStatusLabelAttribute(): string
+    {
+        $labels = [
+            'draft' => 'Borrador',
+            'sent' => 'Enviado',
+            'approved' => 'Aprobada',
+            'rejected' => 'Rechazada',
+            'expired' => 'Expirada',
+        ];
+
+        return $labels[$this->status] ?? ucfirst($this->status);
+    }
 }

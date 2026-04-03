@@ -45,7 +45,7 @@
                             ];
                         @endphp
                         <span class="px-4 py-1 text-[10px] uppercase font-black tracking-widest rounded-full border border-current {{ $statusColors[$quote->status] ?? 'text-white' }}">
-                            {{ $quote->status }}
+                            {{ $quote->status_label }}
                         </span>
                         <p class="text-slate-400 text-xs mt-4 font-mono">{{ $quote->created_at->format('d M, Y') }}</p>
                     </div>
@@ -92,8 +92,8 @@
                                     <p class="text-xs text-slate-500 leading-tight">{{ $item->description }}</p>
                                 </td>
                                 <td class="py-6 text-center text-slate-300 font-medium">{{ $item->quantity }}</td>
-                                <td class="py-6 text-right text-slate-300 font-medium">${{ number_format($item->unit_price, 2) }}</td>
-                                <td class="py-6 text-right text-white font-black">${{ number_format($item->line_total, 2) }}</td>
+                                <td class="py-6 text-right text-slate-300 font-medium">Q{{ number_format($item->unit_price, 2) }}</td>
+                                <td class="py-6 text-right text-white font-black">Q{{ number_format($item->line_total, 2) }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -103,11 +103,11 @@
                     <div class="w-full max-w-xs space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-slate-500 text-sm font-medium">Subtotal</span>
-                            <span class="text-white font-bold">${{ number_format($quote->total, 2) }}</span>
+                            <span class="text-white font-bold">Q{{ number_format($quote->total, 2) }}</span>
                         </div>
                         <div class="flex justify-between items-center text-lg">
                             <span class="text-slate-400 font-black uppercase tracking-tight">Total Final</span>
-                            <span class="text-3xl font-black text-[#00f6ff] glow-cyan">${{ number_format($quote->total, 2) }}</span>
+                            <span class="text-3xl font-black text-[#00f6ff] glow-cyan">Q{{ number_format($quote->total, 2) }}</span>
                         </div>
                     </div>
                 </div>

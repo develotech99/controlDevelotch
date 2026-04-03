@@ -35,7 +35,7 @@
                     </div>
                     <div>
                         <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Monto</p>
-                        <p class="text-sm font-medium text-white">${{ number_format($payment->amount, 2) }}</p>
+                        <p class="text-sm font-medium text-white">Q{{ number_format($payment->amount, 2) }}</p>
                     </div>
                     <div>
                         <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Método de Pago</p>

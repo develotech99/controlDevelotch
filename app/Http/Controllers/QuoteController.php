@@ -6,6 +6,7 @@ use App\Models\Quote;
 use App\Models\Client;
 use App\Models\Service;
 use App\Models\QuoteItem;
+use App\Notifications\QuoteSent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,10 +15,11 @@ class QuoteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view quotes')->only(['index', 'show']);
-        $this->middleware('permission:create quotes')->only(['create', 'store']);
-        $this->middleware('permission:edit quotes')->only(['edit', 'update']);
-        $this->middleware('permission:delete quotes')->only(['destroy']);
+        $this->middleware('permission:ver cotizaciones')->only(['index', 'show']);
+        $this->middleware('permission:crear cotizaciones')->only(['create', 'store']);
+        $this->middleware('permission:editar cotizaciones')->only(['edit', 'update']);
+        $this->middleware('permission:eliminar cotizaciones')->only(['destroy']);
+        $this->middleware('permission:enviar cotizaciones')->only(['send']);
     }
 
     /**
@@ -84,7 +86,7 @@ class QuoteController extends Controller
         });
 
         return redirect()->route('quotes.index')
-            ->with('success', 'Quote created successfully.');
+            ->with('success', 'Cotización creada correctamente.');
     }
 
     /**
@@ -154,7 +156,7 @@ class QuoteController extends Controller
         });
 
         return redirect()->route('quotes.index')
-            ->with('success', 'Quote updated successfully.');
+            ->with('success', 'Cotización actualizada correctamente.');
     }
 
     /**
@@ -165,7 +167,7 @@ class QuoteController extends Controller
         $quote->delete();
 
         return redirect()->route('quotes.index')
-            ->with('success', 'Quote deleted successfully.');
+            ->with('success', 'Cotización eliminada correctamente.');
     }
 
     /**
@@ -175,10 +177,18 @@ class QuoteController extends Controller
     {
         $quote->update(['status' => 'sent']);
 
-        // TODO: Send email notification to client
+        try {
+            if ($quote->client?->email) {
+                $quote->client->notify(new QuoteSent($quote));
+            }
+        } catch (\Throwable $e) {
+            report($e);
+            return redirect()->back()
+                ->with('error', 'No fue posible enviar el correo de cotización. Verifica la configuración de correo.');
+        }
 
         return redirect()->back()
-            ->with('success', 'Quote sent to client successfully.');
+            ->with('success', 'Cotización enviada al cliente correctamente.');
     }
 
     /**

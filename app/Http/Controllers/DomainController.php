@@ -10,10 +10,10 @@ class DomainController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view domains')->only(['index', 'show']);
-        $this->middleware('permission:create domains')->only(['create', 'store']);
-        $this->middleware('permission:edit domains')->only(['edit', 'update']);
-        $this->middleware('permission:delete domains')->only(['destroy']);
+        $this->middleware('permission:ver dominios')->only(['index', 'show']);
+        $this->middleware('permission:crear dominios')->only(['create', 'store']);
+        $this->middleware('permission:editar dominios')->only(['edit', 'update']);
+        $this->middleware('permission:eliminar dominios')->only(['destroy']);
     }
 
     public function index()

@@ -103,7 +103,7 @@
                                                        class="block w-full bg-[#0B1120] border-[#1e293b] rounded-lg text-xs text-right text-[#00f6ff] p-2 font-bold">
                                             </td>
                                             <td class="px-6 py-4 text-right">
-                                                <span class="text-xs font-black text-white" x-text="'$' + (item.quantity * item.unit_price).toFixed(2)"></span>
+                                                <span class="text-xs font-black text-white" x-text="'Q' + (item.quantity * item.unit_price).toFixed(2)"></span>
                                             </td>
                                             <td class="px-4 py-4 text-center">
                                                 <button type="button" @click="removeItem(index)" class="text-rose-500 hover:text-rose-400">
@@ -126,7 +126,7 @@
                         <div class="space-y-4 mb-8">
                             <div class="flex justify-between items-center text-sm">
                                 <span class="text-slate-500 font-medium italic italic italic">Total Vigente</span>
-                                <span class="text-2xl font-black text-[#00f6ff] glow-cyan" x-text="'$' + calculateTotal().toFixed(2)"></span>
+                                <span class="text-2xl font-black text-[#00f6ff] glow-cyan" x-text="'Q' + calculateTotal().toFixed(2)"></span>
                             </div>
                         </div>
 

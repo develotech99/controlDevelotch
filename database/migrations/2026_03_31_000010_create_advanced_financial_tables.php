@@ -34,7 +34,7 @@ return new class extends Migration
                 $table->foreignId('cash_box_id')->nullable()->constrained('cash_boxes')->nullOnDelete();
                 $table->string('number')->unique();
                 $table->decimal('amount', 15, 2);
-                $table->string('currency', 3)->default('USD');
+                $table->string('currency', 3)->default('GTQ');
                 $table->string('concept')->nullable();
                 $table->string('status')->default('emitido');
                 $table->timestamp('printed_at')->nullable();

@@ -37,7 +37,7 @@
                                     <div class="text-xs text-slate-500 italic">{{ $quote->client->company ?? '' }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm font-black text-white">${{ number_format($quote->total, 2) }}</div>
+                                    <div class="text-sm font-black text-white">Q{{ number_format($quote->total, 2) }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     @php
@@ -51,7 +51,7 @@
                                         $statusColor = $statusStyles[$quote->status] ?? $statusStyles['draft'];
                                     @endphp
                                     <span class="px-2 py-0.5 text-[9px] uppercase font-bold tracking-wider rounded border {{ $statusColor }}">
-                                        {{ $quote->status }}
+                                        {{ $quote->status_label }}
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">

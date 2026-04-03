@@ -30,10 +30,10 @@ class InvoiceGenerated extends Notification implements ShouldQueue
 
         return (new MailMessage)
             ->subject('Nueva Factura Generada - DEVELOTECH GLOBAL')
-            ->greeting('Hola ' . $notifiable->name . '!')
+            ->greeting('Hola ' . ($notifiable->name ?? 'Cliente') . '!')
             ->line('Se ha generado una nueva factura para tu cuenta.')
-            ->line('Número de Factura: ' . $this->invoice->number)
-            ->line('Total: $' . number_format($this->invoice->total, 2))
+            ->line('Número de Factura: ' . $this->invoice->invoice_number)
+            ->line('Total: Q' . number_format($this->invoice->total, 2))
             ->action('Ver Detalles de Factura', $url)
             ->line('Gracias por confiar en DEVELOTECH GLOBAL.');
     }

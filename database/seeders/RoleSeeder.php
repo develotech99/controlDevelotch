@@ -12,57 +12,130 @@ class RoleSeeder extends Seeder
     {
         // Create permissions
         $permissions = [
-            // Prospects
-            'view prospects',
-            'create prospects',
-            'edit prospects',
-            'delete prospects',
-            // Clients
-            'view clients',
-            'create clients',
-            'edit clients',
-            'delete clients',
-            // Services
-            'view services',
-            'create services',
-            'edit services',
-            'delete services',
-            // Quotes
-            'view quotes',
-            'create quotes',
-            'edit quotes',
-            'delete quotes',
-            // Projects
-            'view projects',
-            'create projects',
-            'edit projects',
-            'delete projects',
-            // Tasks
-            'view tasks',
-            'create tasks',
-            'edit tasks',
-            'delete tasks',
-            // Invoices
-            'view invoices',
-            'create invoices',
-            'edit invoices',
-            'delete invoices',
-            // Payments
-            'view payments',
-            'create payments',
-            'edit payments',
-            'delete payments',
-            // Users & Roles
-            'view users',
-            'create users',
-            'edit users',
-            'delete users',
-            'view roles',
-            'create roles',
-            'edit roles',
-            'delete roles',
-            // Audit Logs
-            'view audit logs',
+            // Usuarios
+            'ver usuarios',
+            'crear usuarios',
+            'editar usuarios',
+            'eliminar usuarios',
+
+            // Clientes
+            'ver clientes',
+            'crear clientes',
+            'editar clientes',
+            'eliminar clientes',
+
+            // Cotizaciones
+            'ver cotizaciones',
+            'crear cotizaciones',
+            'editar cotizaciones',
+            'eliminar cotizaciones',
+            'enviar cotizaciones',
+
+            // Facturas
+            'ver facturas',
+            'crear facturas',
+            'editar facturas',
+            'eliminar facturas',
+            'enviar facturas',
+
+            // Pagos
+            'ver pagos',
+            'crear pagos',
+            'editar pagos',
+            'eliminar pagos',
+
+            // Cuentas bancarias
+            'ver cuentas bancarias',
+            'crear cuentas bancarias',
+            'editar cuentas bancarias',
+            'eliminar cuentas bancarias',
+
+            // Gastos
+            'ver gastos',
+            'crear gastos',
+            'editar gastos',
+            'eliminar gastos',
+
+            // Ventas
+            'ver ventas',
+            'crear ventas',
+            'editar ventas',
+            'eliminar ventas',
+
+            // Servicios
+            'ver servicios',
+            'crear servicios',
+            'editar servicios',
+            'eliminar servicios',
+
+            // Proyectos
+            'ver proyectos',
+            'crear proyectos',
+            'editar proyectos',
+            'eliminar proyectos',
+
+            // Dominios
+            'ver dominios',
+            'crear dominios',
+            'editar dominios',
+            'eliminar dominios',
+
+            // Prospectos
+            'ver prospectos',
+            'crear prospectos',
+            'editar prospectos',
+            'eliminar prospectos',
+
+            // Tickets
+            'ver tickets',
+            'crear tickets',
+            'editar tickets',
+            'eliminar tickets',
+
+            // Registros de auditoría
+            'ver registros de auditoría',
+
+            // Servidores
+            'ver servidores',
+            'crear servidores',
+            'editar servidores',
+            'eliminar servidores',
+
+            // Credenciales de servidor
+            'ver credenciales de servidor',
+            'crear credenciales de servidor',
+            'editar credenciales de servidor',
+            'eliminar credenciales de servidor',
+
+            // Cajas
+            'ver cajas',
+            'crear cajas',
+            'editar cajas',
+            'eliminar cajas',
+
+            // Caja chica
+            'ver caja chica',
+            'crear caja chica',
+            'editar caja chica',
+            'eliminar caja chica',
+
+            // Suscripciones
+            'ver suscripciones',
+            'crear suscripciones',
+            'editar suscripciones',
+            'eliminar suscripciones',
+
+            // Tareas
+            'ver tareas',
+            'crear tareas',
+            'editar tareas',
+            'eliminar tareas',
+
+            // Roles
+            'ver roles',
+            'crear roles',
+            'editar roles',
+            'eliminar roles',
         ];
 
         foreach ($permissions as $permission) {
@@ -79,24 +152,24 @@ class RoleSeeder extends Seeder
 
         // Assign some permissions to staff
         $staffPermissions = [
-            'view prospects', 'create prospects', 'edit prospects',
-            'view clients', 'create clients', 'edit clients',
-            'view services', 'create services', 'edit services',
-            'view quotes', 'create quotes', 'edit quotes',
-            'view projects', 'create projects', 'edit projects',
-            'view tasks', 'create tasks', 'edit tasks',
-            'view invoices', 'create invoices', 'edit invoices',
-            'view payments', 'create payments', 'edit payments',
-            'view users', 'view roles',
-            'view audit logs',
+            'ver prospectos', 'crear prospectos', 'editar prospectos',
+            'ver clientes', 'crear clientes', 'editar clientes',
+            'ver servicios', 'crear servicios', 'editar servicios',
+            'ver cotizaciones', 'crear cotizaciones', 'editar cotizaciones', 'enviar cotizaciones',
+            'ver proyectos', 'crear proyectos', 'editar proyectos',
+            'ver tareas', 'crear tareas', 'editar tareas',
+            'ver facturas', 'crear facturas', 'editar facturas', 'enviar facturas',
+            'ver pagos', 'crear pagos', 'editar pagos',
+            'ver usuarios', 'ver roles',
+            'ver registros de auditoría',
         ];
         $staffRole->syncPermissions($staffPermissions);
 
         // Assign limited permissions to client
         $clientPermissions = [
-            'view quotes',
-            'view invoices',
-            'view payments',
+            'ver cotizaciones',
+            'ver facturas',
+            'ver pagos',
         ];
         $clientRole->syncPermissions($clientPermissions);
     }

@@ -9,7 +9,7 @@ class AuditLogController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view audit logs');
+        $this->middleware('permission:ver registros de auditoría');
     }
 
     /**

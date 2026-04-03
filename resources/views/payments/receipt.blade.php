@@ -92,7 +92,7 @@
         <div class="divider"></div>
 
         <div class="total">
-            TOTAL: ${{ number_format($payment->amount, 2) }}
+            TOTAL: Q{{ number_format($payment->amount, 2) }}
         </div>
 
         <div class="divider"></div>
@@ -136,7 +136,7 @@
                         <div style="font-size: 12px; color: #64748b; margin-top: 4px;">Metodo de Pago: {{ ucfirst($payment->payment_method) }} | Referencia: {{ $payment->reference ?? 'N/A' }}</div>
                     </td>
                     <td style="text-align: right; font-weight: bold; font-size: 18px;">
-                        ${{ number_format($payment->amount, 2) }}
+                        Q{{ number_format($payment->amount, 2) }}
                     </td>
                 </tr>
             </tbody>
@@ -144,7 +144,7 @@
 
         <div style="background: #f8fafc; padding: 20px; border-radius: 12px;">
             <p style="margin: 0; font-size: 12px; color: #475569;">
-                <span class="font-bold">TOTAL EN LETRAS:</span> {{ Number::spell($payment->amount) }} DÓLARES AMERICANOS.
+                <span class="font-bold">TOTAL EN LETRAS:</span> {{ Number::spell($payment->amount) }} QUETZALES.
             </p>
         </div>
 

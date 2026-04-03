@@ -12,10 +12,10 @@ class TaskController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view tasks')->only(['index', 'show']);
-        $this->middleware('permission:create tasks')->only(['create', 'store']);
-        $this->middleware('permission:edit tasks')->only(['edit', 'update']);
-        $this->middleware('permission:delete tasks')->only(['destroy']);
+        $this->middleware('permission:ver tareas')->only(['index', 'show']);
+        $this->middleware('permission:crear tareas')->only(['create', 'store']);
+        $this->middleware('permission:editar tareas')->only(['edit', 'update']);
+        $this->middleware('permission:eliminar tareas')->only(['destroy']);
     }
 
     /**

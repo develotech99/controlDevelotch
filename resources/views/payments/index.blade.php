@@ -34,7 +34,7 @@
                                 <div class="text-sm text-slate-300">{{ $payment->invoice->client->name ?? 'N/A' }}</div>
                             </td>
                             <td class="px-6 py-4">
-                                <div class="text-sm font-medium text-white">${{ number_format($payment->amount, 2) }}</div>
+                                <div class="text-sm font-medium text-white">Q{{ number_format($payment->amount, 2) }}</div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-slate-300">{{ $payment->payment_method }}</div>

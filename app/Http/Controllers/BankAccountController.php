@@ -10,10 +10,10 @@ class BankAccountController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view bank accounts')->only(['index', 'show']);
-        $this->middleware('permission:create bank accounts')->only(['create', 'store']);
-        $this->middleware('permission:edit bank accounts')->only(['edit', 'update']);
-        $this->middleware('permission:delete bank accounts')->only(['destroy']);
+        $this->middleware('permission:ver cuentas bancarias')->only(['index', 'show']);
+        $this->middleware('permission:crear cuentas bancarias')->only(['create', 'store']);
+        $this->middleware('permission:editar cuentas bancarias')->only(['edit', 'update']);
+        $this->middleware('permission:eliminar cuentas bancarias')->only(['destroy']);
     }
 
     /**
@@ -53,7 +53,7 @@ class BankAccountController extends Controller
         BankAccount::create($validated);
 
         return redirect()->route('bank-accounts.index')
-            ->with('success', 'Bank account created successfully.');
+            ->with('success', 'Cuenta bancaria creada correctamente.');
     }
 
     /**
@@ -89,7 +89,7 @@ class BankAccountController extends Controller
         $bankAccount->update($validated);
 
         return redirect()->route('bank-accounts.index')
-            ->with('success', 'Bank account updated successfully.');
+            ->with('success', 'Cuenta bancaria actualizada correctamente.');
     }
 
     /**
@@ -100,12 +100,12 @@ class BankAccountController extends Controller
         // Check if account has transactions
         if ($bankAccount->payments()->count() > 0) {
             return redirect()->route('bank-accounts.index')
-                ->with('error', 'Cannot delete bank account with existing transactions.');
+                ->with('error', 'No se puede eliminar la cuenta bancaria con transacciones existentes.');
         }
 
         $bankAccount->delete();
 
         return redirect()->route('bank-accounts.index')
-            ->with('success', 'Bank account deleted successfully.');
+            ->with('success', 'Cuenta bancaria eliminada correctamente.');
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('bank_name');
             $table->string('account_number');
-            $table->string('currency', 3)->default('USD');
+            $table->string('currency', 3)->default('GTQ');
             $table->decimal('balance', 15, 2)->default(0);
             $table->timestamps();
         });

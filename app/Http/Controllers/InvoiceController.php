@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Invoice;
 use App\Models\Client;
 use App\Models\Payment;
+use App\Notifications\InvoiceGenerated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,10 +15,11 @@ class InvoiceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view invoices')->only(['index', 'show']);
-        $this->middleware('permission:create invoices')->only(['create', 'store']);
-        $this->middleware('permission:edit invoices')->only(['edit', 'update']);
-        $this->middleware('permission:delete invoices')->only(['destroy']);
+        $this->middleware('permission:ver facturas')->only(['index', 'show']);
+        $this->middleware('permission:crear facturas')->only(['create', 'store']);
+        $this->middleware('permission:editar facturas')->only(['edit', 'update']);
+        $this->middleware('permission:eliminar facturas')->only(['destroy']);
+        $this->middleware('permission:enviar facturas')->only(['send']);
     }
 
     /**
@@ -174,10 +176,18 @@ class InvoiceController extends Controller
     {
         $invoice->update(['status' => 'sent']);
 
-        // TODO: Send email notification to client
+        try {
+            if ($invoice->client?->email) {
+                $invoice->client->notify(new InvoiceGenerated($invoice));
+            }
+        } catch (\Throwable $e) {
+            report($e);
+            return redirect()->back()
+                ->with('error', 'No fue posible enviar el correo de factura. Verifica la configuración de correo.');
+        }
 
         return redirect()->back()
-            ->with('success', 'Invoice sent to client successfully.');
+            ->with('success', 'Comprobante enviado al cliente correctamente.');
     }
 
     /**
@@ -188,7 +198,7 @@ class InvoiceController extends Controller
         $invoice->update(['status' => 'paid']);
 
         return redirect()->back()
-            ->with('success', 'Invoice marked as paid successfully.');
+            ->with('success', 'Comprobante marcado como pagado correctamente.');
     }
 
     /**

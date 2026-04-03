@@ -11,10 +11,10 @@ class VpsServerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view servers')->only(['index', 'show']);
-        $this->middleware('permission:create servers')->only(['create', 'store']);
-        $this->middleware('permission:edit servers')->only(['edit', 'update']);
-        $this->middleware('permission:delete servers')->only(['destroy']);
+        $this->middleware('permission:ver servidores')->only(['index', 'show']);
+        $this->middleware('permission:crear servidores')->only(['create', 'store']);
+        $this->middleware('permission:editar servidores')->only(['edit', 'update']);
+        $this->middleware('permission:eliminar servidores')->only(['destroy']);
     }
 
     /**

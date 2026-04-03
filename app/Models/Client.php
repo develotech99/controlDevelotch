@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 use App\Traits\HasAuditLog;
 
 class Client extends Model
 {
-    use HasAuditLog;
+    use HasAuditLog, Notifiable;
     protected $primaryKey = 'cli_id';
     
     protected $fillable = [

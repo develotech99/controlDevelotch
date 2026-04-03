@@ -10,10 +10,10 @@ class PettyCashController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view petty cash')->only(['index', 'show']);
-        $this->middleware('permission:create petty cash')->only(['create', 'store']);
-        $this->middleware('permission:edit petty cash')->only(['edit', 'update']);
-        $this->middleware('permission:delete petty cash')->only(['destroy']);
+        $this->middleware('permission:ver caja chica')->only(['index', 'show']);
+        $this->middleware('permission:crear caja chica')->only(['create', 'store']);
+        $this->middleware('permission:editar caja chica')->only(['edit', 'update']);
+        $this->middleware('permission:eliminar caja chica')->only(['destroy']);
     }
 
     /**

@@ -23,5 +23,55 @@
     </head>
     <body class="font-sans text-slate-300 antialiased bg-[#0B1120] selection:bg-[#00f6ff] selection:text-[#0B1120]">
         {{ $slot }}
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                @if(session('success'))
+                    Swal.fire({
+                        title: '¡Éxito!',
+                        text: "{{ session('success') }}",
+                        icon: 'success',
+                        background: '#0f172a',
+                        color: '#fff',
+                        confirmButtonColor: '#00f6ff',
+                        confirmButtonText: 'Entendido'
+                    });
+                @endif
+                @if(session('status'))
+                    Swal.fire({
+                        title: 'Listo',
+                        text: "{{ session('status') }}",
+                        icon: 'success',
+                        background: '#0f172a',
+                        color: '#fff',
+                        confirmButtonColor: '#00f6ff',
+                        confirmButtonText: 'Entendido'
+                    });
+                @endif
+                @if(session('error'))
+                    Swal.fire({
+                        title: 'Error',
+                        text: "{{ session('error') }}",
+                        icon: 'error',
+                        background: '#0f172a',
+                        color: '#fff',
+                        confirmButtonColor: '#00f6ff',
+                        confirmButtonText: 'Cerrar'
+                    });
+                @endif
+                @if($errors->any())
+                    Swal.fire({
+                        title: 'Error de inicio de sesión',
+                        text: "{{ $errors->first() }}",
+                        icon: 'error',
+                        background: '#0f172a',
+                        color: '#fff',
+                        confirmButtonColor: '#00f6ff',
+                        confirmButtonText: 'Cerrar'
+                    });
+                @endif
+            });
+        </script>
     </body>
 </html>
